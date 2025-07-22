@@ -19,6 +19,11 @@ public class Functional_Programming_Basics {
                 .filter(course -> course.length() >= 7)
                 .forEach(System.out::println);
 
+        courses.stream()
+                .filter(course -> course.contains("Spring"))
+                .map(course -> "lenght of the course : "+course.length())
+                .forEach(System.out::println);
+
 
     }
     public static void printOddNumbers(List<Integer> numbers){
