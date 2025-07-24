@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Functional_Programming_Basics {
+public class Functional_Programming_Basics_01 {
     public static void main(String[] args) {
         List<Integer> list = List.of(2, 4, 3, 7, 12, 15);
 
