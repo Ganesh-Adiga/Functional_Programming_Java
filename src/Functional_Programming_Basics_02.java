@@ -3,7 +3,7 @@ import java.util.Optional;
 
 public class Functional_Programming_Basics_02 {
     public static void main(String[] args) {
-        List<Integer> numbers = List.of(2, 4, 3, 7, 12, 15);
+        List<Integer> numbers = List.of(2, 4,4, 3, 7, 12, 15);
 
         Integer sum = numbers.stream()
                 .reduce(0, Functional_Programming_Basics_02::sum);
@@ -17,6 +17,32 @@ public class Functional_Programming_Basics_02 {
 
         System.out.println("sum by inbuild method : "+sum1.get());
 
+
+        sumOfSquares(numbers);
+
+        sumOfOddNumbers (numbers);
+        numbers.stream().distinct().forEach(System.out::println);
+        numbers.stream().distinct().sorted().forEach(System.out::println);
+
+
+
+    }
+
+    private static void sumOfSquares(List<Integer> numbers){
+
+        Integer sumOfSqares = numbers.stream()
+                .map(x -> x * x)
+                .reduce(0, Integer::sum);
+        System.out.println("sum of squares :" + sumOfSqares);
+
+    }
+
+    private static void sumOfOddNumbers(List<Integer> numbers){
+
+        Integer sumOfOddNumbers = numbers.stream()
+                .filter(x -> x%2!=0)
+                .reduce(0, Integer::sum);
+        System.out.println("sum of odd numbers :" + sumOfOddNumbers);
 
     }
 
