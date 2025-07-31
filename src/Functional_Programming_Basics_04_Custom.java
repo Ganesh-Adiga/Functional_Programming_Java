@@ -1,9 +1,11 @@
 import java.util.Comparator;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Functional_Programming_Basics_04_Custom {
     public static void main(String[] args) {
@@ -75,6 +77,44 @@ public class Functional_Programming_Basics_04_Custom {
         System.out.println(courses.stream()
                 .filter(reviewPredidcateGreaterThan90)
                 .findAny());
+
+
+
+        //total no, average, sum
+
+        System.out.println(courses.stream()
+                .mapToInt(Course::getNoOfStudents)
+                .sum());
+
+        OptionalDouble average = courses.stream()
+                .mapToInt(Course::getNoOfStudents)
+                .average();
+        System.out.println(average.getAsDouble());
+
+        System.out.println(courses.stream()
+                .mapToInt(Course::getNoOfStudents)
+                .count());
+
+
+        //group by
+        System.out.println("************ group by  *************");
+
+        System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory)));
+
+        System.out.println(courses.stream().collect(Collectors.groupingBy(Course::getCategory, Collectors.counting())));
+
+
+        System.out.println(courses.stream()
+                .collect(Collectors.groupingBy(Course::getCategory, Collectors.
+                        maxBy(Comparator.comparing(Course::getReviewScore)))));
+
+        System.out.println(courses.stream().collect(Collectors
+                .groupingBy(Course::getCategory, Collectors.mapping(Course::getName, Collectors.toList()))));
+
+
+
+
+
 
     }
 
