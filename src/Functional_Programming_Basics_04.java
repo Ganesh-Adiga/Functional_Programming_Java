@@ -11,6 +11,10 @@ public class Functional_Programming_Basics_04 {
                 .flatMap(Arrays::stream)
                 .distinct()
                 .forEach(System.out::println);
+
+        Files.list(Paths.get("."))
+                .filter(Files::isDirectory)
+                .forEach(System.out::println);
     }
 
 }
